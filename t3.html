@@ -1,0 +1,79 @@
+<head>
+  <title>t3</title>
+</head>
+
+<body>
+{{> page}}
+</body>
+
+<template name="page">
+  <div id="main">
+    <div id="left">
+      {{> board }}
+    </div>
+    <div id="right">
+      {{> lobby }}
+    </div>
+  </div>
+</template>
+
+<template name="board">
+    <div class='container'>
+    <table>
+      <tbody>
+        {{> listRows}}
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<template name="listRows">
+  {{#each rows}}
+    <tr class='row'>
+      {{> listCells}}
+    </tr>
+  {{/each}}
+</template>
+
+<template name="listCells">
+  {{#each cells}}
+    {{> cell}}
+  {{/each}}
+</template>
+
+<template name="cell">
+  <td class='movement {{#unless move}}available{{/unless}} {{#if winner}}winner{{/if}}'>
+    <span class='move-{{move}}'></span>
+  </td>
+</template>
+
+<template name="lobby">
+  <div>
+
+    {{#if show }}
+    <div id="lobby">
+      <div id="btns">
+         <button id="startnew" href="#" class="btn btn-primary">Start New Game</button>
+         <button id="joingame" href="#" class="btn btn-primary">Join Existing Game</button>
+      </div>
+      <button id="gotolobby" href="#" class="btn btn-primary hide">Go to Lobby</button>
+
+      {{> gameslist}}
+      
+      </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="gameslist">
+   {{#each gameslist}}
+    <div  class="pllist player hide">
+     {{gid}}
+     {{else}}
+      No Games present
+    </div>    
+      
+   {{/each}}
+</template>
+
+
