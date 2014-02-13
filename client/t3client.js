@@ -1,9 +1,10 @@
-Template.listRows.rows = function(){
+Template.listRows.rows = function() {
   return [1,2,3];
 };
 
 Template.gameslist.gameslist = function() {
-  return Players.find({},{gid:1}).fetch();
+  var g = Games.findOne({},{gid:1})
+  return g && g.gid;
 };
 
 var player = function() {

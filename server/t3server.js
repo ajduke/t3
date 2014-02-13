@@ -5,6 +5,7 @@ Meteor.methods({
     resetCells(currentId,newGameId);
     resetTurn(currentId,newGameId);
     Players.update({_id : pl},{$set:{gid:newGameId}})
+    Games.upsert({_id:"games"},{$addToSet:{gid:newGameId}})
   }
 });
 
